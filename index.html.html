@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Catherine Javar | Virtual Assistant & Customer Support Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue-deep: #0d2b5e;
+    --blue-mid: #1a56a4;
+    --blue-light: #3b82f6;
+    --blue-pale: #dbeafe;
+    --blue-tint: #f0f6ff;
+    --white: #ffffff;
+    --gray-text: #374151;
+    --gray-soft: #6b7280;
+    --gray-line: #e5e7eb;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--gray-text);
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--gray-line);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: var(--blue-deep);
+    letter-spacing: -0.02em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--gray-soft);
+    font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--blue-mid); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--blue-deep) 0%, #1a3a7a 50%, var(--blue-mid) 100%);
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(59,130,246,0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(255,255,255,0.06) 0%, transparent 50%);
+  }
+  .hero-dots {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 700px; }
+
+  .hero-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #bfdbfe;
+    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.4rem 1.1rem; border-radius: 100px;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    color: var(--white);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.2rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero h1 em { color: #93c5fd; font-style: italic; }
+  .hero-sub {
+    font-size: 1.1rem; color: #bfdbfe; font-weight: 300;
+    max-width: 480px; margin: 0 auto 2.4rem;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.8rem 1.8rem; border-radius: 8px;
+    font-weight: 600; font-size: 0.9rem;
+    text-decoration: none; transition: all 0.2s; cursor: pointer; border: none;
+  }
+  .btn-white { background: var(--white); color: var(--blue-deep); }
+  .btn-white:hover { background: #eff6ff; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+  .btn-outline { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.4); }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); transform: translateY(-1px); }
+
+  .scroll-hint {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+    color: rgba(255,255,255,0.4); font-size: 0.75rem; letter-spacing: 0.06em;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+  }
+
+  /* SECTIONS */
+  section { padding: 5rem 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--blue-mid); margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    color: var(--blue-deep);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .section-desc { color: var(--gray-soft); max-width: 520px; font-size: 1rem; margin-bottom: 3rem; }
+
+  /* ABOUT */
+  #about { background: var(--blue-tint); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+  }
+  .about-card {
+    background: var(--white);
+    border: 1px solid var(--gray-line);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(13,43,94,0.05);
+  }
+  .about-stat { margin-bottom: 1.5rem; }
+  .about-stat:last-child { margin-bottom: 0; }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem; color: var(--blue-mid); line-height: 1;
+  }
+  .stat-label { font-size: 0.88rem; color: var(--gray-soft); margin-top: 0.2rem; }
+  .about-text p { color: var(--gray-text); margin-bottom: 1rem; line-height: 1.8; }
+  .trait-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.2rem; }
+  .chip {
+    background: var(--blue-pale); color: var(--blue-deep);
+    font-size: 0.82rem; font-weight: 500;
+    padding: 0.35rem 0.85rem; border-radius: 100px;
+  }
+
+  /* EXPERIENCE */
+  #experience { background: var(--white); }
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: ''; position: absolute; left: 0; top: 0.5rem; bottom: 0.5rem;
+    width: 2px; background: var(--blue-pale); border-radius: 2px;
+  }
+  .timeline-item { position: relative; margin-bottom: 2.5rem; }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -2.45rem; top: 0.45rem;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--blue-mid); border: 2.5px solid var(--white);
+    box-shadow: 0 0 0 3px var(--blue-pale);
+  }
+  .timeline-item.current::before { background: var(--blue-light); animation: glow 2s ease-in-out infinite; }
+  .job-meta {
+    display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap;
+    margin-bottom: 0.3rem;
+  }
+  .job-title { font-weight: 700; font-size: 1.05rem; color: var(--blue-deep); }
+  .job-company { font-weight: 500; color: var(--gray-soft); font-size: 0.9rem; }
+  .job-date {
+    display: inline-flex; align-items: center;
+    background: var(--blue-pale); color: var(--blue-mid);
+    font-size: 0.78rem; font-weight: 600; padding: 0.2rem 0.7rem; border-radius: 100px;
+    margin-bottom: 0.8rem;
+  }
+  .job-list { list-style: none; padding: 0; }
+  .job-list li {
+    position: relative; padding-left: 1.1rem;
+    font-size: 0.93rem; color: var(--gray-text); margin-bottom: 0.35rem;
+  }
+  .job-list li::before {
+    content: '→'; position: absolute; left: 0;
+    color: var(--blue-light); font-size: 0.85rem;
+  }
+
+  /* SKILLS */
+  #skills { background: var(--blue-tint); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.2rem; }
+  .skill-card {
+    background: var(--white); border: 1px solid var(--gray-line);
+    border-radius: 12px; padding: 1.5rem;
+    box-shadow: 0 2px 12px rgba(13,43,94,0.04);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .skill-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(13,43,94,0.1); }
+  .skill-icon { font-size: 1.6rem; margin-bottom: 0.6rem; }
+  .skill-name { font-weight: 700; font-size: 0.95rem; color: var(--blue-deep); margin-bottom: 0.4rem; }
+  .skill-desc { font-size: 0.83rem; color: var(--gray-soft); line-height: 1.5; }
+
+  /* SERVICES */
+  #services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
+  .service-card {
+    border: 1.5px solid var(--gray-line); border-radius: 16px;
+    padding: 2rem; transition: all 0.25s;
+  }
+  .service-card:hover {
+    border-color: var(--blue-light);
+    box-shadow: 0 8px 30px rgba(26,86,164,0.1);
+    transform: translateY(-3px);
+  }
+  .service-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem; color: var(--blue-pale);
+    line-height: 1; margin-bottom: 0.8rem;
+  }
+  .service-title { font-weight: 700; font-size: 1rem; color: var(--blue-deep); margin-bottom: 0.5rem; }
+  .service-desc { font-size: 0.87rem; color: var(--gray-soft); line-height: 1.6; }
+
+  /* CONTACT */
+  #contact {
+    background: var(--blue-deep);
+    text-align: center;
+    color: var(--white);
+  }
+  #contact .section-label { color: #93c5fd; }
+  #contact .section-title { color: var(--white); margin: 0 auto 1rem; }
+  #contact .section-desc { color: #bfdbfe; margin: 0 auto 2.5rem; }
+  .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    color: var(--white); text-decoration: none; padding: 0.75rem 1.5rem;
+    border-radius: 10px; font-size: 0.9rem; font-weight: 500;
+    transition: all 0.2s;
+  }
+  .contact-link:hover { background: rgba(255,255,255,0.18); transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer {
+    background: #071a3e; color: rgba(255,255,255,0.35);
+    text-align: center; padding: 1.5rem; font-size: 0.8rem;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; } 50% { opacity: 0.9; }
+  }
+  @keyframes glow {
+    0%, 100% { box-shadow: 0 0 0 3px var(--blue-pale); }
+    50% { box-shadow: 0 0 0 5px #bfdbfe; }
+  }
+
+  .fade-in {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 680px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Catherine Javar</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-dots"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Available for Hire · Remote</div>
+    <h1>Hi, I'm <em>Catherine</em> — Your Next VA</h1>
+    <p class="hero-sub">Customer Support Specialist & Virtual Assistant based in the Philippines. Organized, tech-savvy, and passionate about delivering outstanding client experiences.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-white">Get in Touch</a>
+      <a href="#experience" class="btn btn-outline">View My Work ↓</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    SCROLL
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">Who I Am</p>
+      <h2 class="section-title">Driven by Detail,<br/>Powered by People</h2>
+    </div>
+    <div class="about-grid fade-in">
+      <div class="about-text">
+        <p>I'm Catherine, a Customer Support Specialist with hands-on experience in financial and logistics accounts. I bring a methodical, client-first approach to every interaction — whether it's resolving a complex account inquiry or tracking down a missing package.</p>
+        <p>My background in engineering sharpened my analytical thinking, while my customer service career built my empathy and communication skills. I thrive in fast-paced remote environments and love finding efficient solutions to complex problems.</p>
+        <div class="trait-chips">
+          <span class="chip">Attention to Detail</span>
+          <span class="chip">Organized</span>
+          <span class="chip">Tech-Savvy</span>
+          <span class="chip">Fast Learner</span>
+          <span class="chip">English & Filipino</span>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="about-stat">
+          <div class="stat-num">1+</div>
+          <div class="stat-label">Year in Customer Support</div>
+        </div>
+        <div class="about-stat">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Industries: Finance & Logistics</div>
+        </div>
+        <div class="about-stat">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Tools & Platforms Mastered</div>
+        </div>
+        <div class="about-stat">
+          <div class="stat-num">BS</div>
+          <div class="stat-label">Agricultural & Biosystems Engineering, CLSU 2023</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">Career Path</p>
+      <h2 class="section-title">Work Experience</h2>
+      <p class="section-desc">Over a year of professional experience across financial and logistics support environments.</p>
+    </div>
+    <div class="timeline fade-in">
+      <div class="timeline-item current">
+        <div class="job-meta">
+          <span class="job-title">Customer Support Specialist</span>
+          <span class="job-company">· Hopla.online</span>
+        </div>
+        <div class="job-date">May 2025 – Present · Logistics Account</div>
+        <ul class="job-list">
+          <li>Track and monitor customer shipments with real-time, accurate updates on package status</li>
+          <li>Respond to multi-channel inquiries regarding orders, deliveries, and returns</li>
+          <li>Investigate and resolve lost, delayed, or damaged package cases with logistics teams</li>
+          <li>Document customer interactions and resolutions accurately in the CRM system</li>
+          <li>Follow up on open cases to ensure complete resolution and high satisfaction</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="job-meta">
+          <span class="job-title">Customer Service Representative</span>
+          <span class="job-company">· Foundever</span>
+        </div>
+        <div class="job-date">May 2024 – January 2025 · Financial Account</div>
+        <ul class="job-list">
+          <li>Assisted customers with loan account inquiries including balances, payments, and disputes</li>
+          <li>Processed loan transactions and account modifications per company policies</li>
+          <li>Utilized Salesforce CRM to log, track, and manage customer cases</li>
+          <li>Escalated complex financial issues to appropriate departments</li>
+          <li>Maintained confidentiality standards for sensitive financial and personal data</li>
+          <li>Consistently met KPIs: call quality, handle time, and CSAT scores</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">Toolkit</p>
+      <h2 class="section-title">Skills & Tools</h2>
+      <p class="section-desc">A versatile set of tools and competencies to handle your business needs remotely and efficiently.</p>
+    </div>
+    <div class="skills-grid fade-in">
+      <div class="skill-card">
+        <div class="skill-icon">🗂️</div>
+        <div class="skill-name">Salesforce CRM</div>
+        <div class="skill-desc">Case logging, tracking, and customer account management</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📊</div>
+        <div class="skill-name">Google Workspace</div>
+        <div class="skill-desc">Docs, Sheets, Gmail, Calendar, Drive — full suite proficiency</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">💼</div>
+        <div class="skill-name">Microsoft Office</div>
+        <div class="skill-desc">Word, Excel, and PowerPoint for documentation and reporting</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">💬</div>
+        <div class="skill-name">Zoom & Slack</div>
+        <div class="skill-desc">Remote communication and team collaboration platforms</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📋</div>
+        <div class="skill-name">Trello</div>
+        <div class="skill-desc">Task and project management with boards and card tracking</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🎨</div>
+        <div class="skill-name">Canva</div>
+        <div class="skill-desc">Visual content creation for social media and presentations</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🤖</div>
+        <div class="skill-name">AI Tools</div>
+        <div class="skill-desc">ChatGPT and Claude AI for productivity and content drafting</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📦</div>
+        <div class="skill-name">Logistics Support</div>
+        <div class="skill-desc">Package tracking, shipment coordination, case resolution</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">What I Offer</p>
+      <h2 class="section-title">Services</h2>
+      <p class="section-desc">I can help your business with a wide range of virtual support tasks.</p>
+    </div>
+    <div class="services-grid fade-in">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-title">Customer Support</div>
+        <div class="service-desc">Email, live chat, and phone support — handling inquiries, complaints, and follow-ups professionally.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-title">Admin & Data Entry</div>
+        <div class="service-desc">Accurate data encoding, record management, spreadsheet maintenance, and document preparation.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-title">Order & Logistics Support</div>
+        <div class="service-desc">Tracking shipments, coordinating with couriers, and resolving delivery-related customer issues.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-title">CRM Management</div>
+        <div class="service-desc">Logging interactions, updating records, and maintaining organized client databases in Salesforce or similar tools.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">05</div>
+        <div class="service-title">Email & Calendar Management</div>
+        <div class="service-desc">Organizing inboxes, scheduling meetings, drafting professional responses, and managing communications.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">06</div>
+        <div class="service-title">Content & Design Support</div>
+        <div class="service-desc">Creating simple visual content, social media graphics, and presentations using Canva and Office tools.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">Let's Connect</p>
+      <h2 class="section-title">Ready to Work Together?</h2>
+      <p class="section-desc">I'm currently open to remote VA and customer support opportunities. Reach out and let's talk!</p>
+    </div>
+    <div class="contact-links fade-in">
+      <a href="mailto:catherineajavar@gmail.com" class="contact-link">📧 catherineajavar@gmail.com</a>
+      <a href="tel:+639932880908" class="contact-link">📱 0993 288 0908</a>
+      <a href="https://www.linkedin.com/in/catherine-javar" target="_blank" class="contact-link">💼 LinkedIn Profile</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Catherine A. Javar · Quezon City, Metro Manila, Philippines · Built with ❤️</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
