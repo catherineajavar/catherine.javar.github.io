@@ -543,15 +543,14 @@ footer span{color:#E08A38;}
 
 <!-- ── SCRIPTS ── -->
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// Build email (prevents Cloudflare obfuscation)
-const u = 'catherineajavar';
-const d = 'gmail.com';
-const el = document.getElementById('emailLink');
-const et = document.getElementById('emailText');
-if (el && et) {
-  el.href = 'mailto:' + u + '@' + d;
-  et.textContent = u + '@' + d;
-}
+// Build email from data attributes (bypasses Cloudflare)
+document.querySelectorAll('.email-reveal').forEach(function(el) {
+  var u = el.getAttribute('data-user');
+  var d = el.getAttribute('data-domain');
+  var full = u + '@' + d;
+  el.href = 'mai' + 'lto:' + full;
+  el.querySelector('.email-display').textContent = full;
+});
 
 // Scroll progress
 const bar = document.getElementById('progressBar');
